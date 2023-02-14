@@ -1,0 +1,17 @@
+[tool.poetry]
+name = "items"
+version = "0.1.0"
+description = ""
+authors = ["Ivan Patin <payk1230@bk.ru>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.10"
+django = "^4.1.6"
+stripe = "^5.1.1"
+psycopg2-binary = "^2.9.5"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

@@ -1,0 +1,42 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Buy order {{ object.id }}</title>
+    <script src="https://js.stripe.com/v3/"></script>
+</head>
+<body>
+    <h1>Order {{ object.id }}</h1>
+    <h2>Items:</h2>
+    {% for item in object.items.all %}
+        <p>Name: {{ item.name }}</p>
+        <p>Description: {{ item.description }}</p>
+        <p>Price: {{ item.price }}</p>
+        <br>
+    {% endfor %}
+
+    <button id="buy-button">Buy</button>
+    {{ object.id|json_script:"order-id" }}
+    <script type="text/javascript">
+        const orderID = JSON.parse(document.getElementById("order-id").textContent);
+
+        const stripe = Stripe('pk_test_51Mb8DqEzBPFAU9qUEYkuyBmN3hYCFCdlFSbAUdjBrxiMLcbxFVRwKoWIktlsVUWCz6zgB1qZOXH6SB29wBG40b7D00vbn1JbZ1');
+        const buyButton = document.getElementById('buy-button');
+        buyButton.addEventListener('click', function() {
+        // Create a new Checkout Session using the server-side endpoint
+        // Redirect to Stripe Session Checkout
+        fetch(`/items/order/buy/${orderID}`, {method: 'GET'})
+        .then(response => response.json())
+        .then(data => {
+            if (data?.error) {
+                console.log(data.error)
+                return
+            }
+            stripe.redirectToCheckout({sessionId: data.session_id})
+        })
+        });
+    </script>
+</body>
+</html>
