@@ -1,6 +1,6 @@
 from django.contrib import admin
-from .models import Order, Discount, Item, Tax
 
+from .models import Discount, Item, Order, Tax
 
 admin.site.register(Order, admin.ModelAdmin)
 admin.site.register(Discount, admin.ModelAdmin)

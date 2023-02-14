@@ -9,8 +9,8 @@ MIN_PRICE = 1
 def validate_min(value):
     if value < MIN_PRICE:
         raise ValidationError(
-            f'%(value)s is less than {MIN_PRICE}',
-            params={'value': value},
+            f"%(value)s is less than {MIN_PRICE}",
+            params={"value": value},
         )
 
 

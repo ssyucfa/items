@@ -15,3 +15,23 @@ psycopg2-binary = "^2.9.5"
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
+
+[tool.isort]
+known_local_folder = "/"
+line_length  = 120
+profile = "black"
+
+[tool.black]
+line_length = 120
+include = '\.pyi?$'
+exclude = '''
+/(
+  | \.venv
+  | migrations
+)/
+'''
+
+[tool.flake8]
+max-line-length = 120
+filename = "*.py"
+exclude = ".mypy_cache/ .pytest_cache/ venv/ **/migrations/ **/__init__.py"

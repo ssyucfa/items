@@ -1,6 +1,6 @@
 from django import forms
 
-from items.models import Order, Item
+from items.models import Item, Order
 from items.services import add_random_discount, add_random_tax
 
 
@@ -9,7 +9,7 @@ class CreateOrderForm(forms.ModelForm):
 
     class Meta:
         model = Order
-        exclude = ("total_price", )
+        exclude = ("total_price",)
 
     def save(self, commit=True):
         order = super().save(commit=False)

@@ -47,7 +47,6 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-
     "items",
 ]
 
@@ -133,4 +132,7 @@ STATIC_URL = "static/"
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 
-STRIPE_API_KEY = os.getenv("STRIPE_API_KEY", "sk_test_51Mb8DqEzBPFAU9qUETGKEr3xgRMQvwh0o1RcmVTsdFQaV8uo1wBvczRtJ9ZHl7vYXRSfFnPVSSHaeyvCKHpZvQRn00eE3dvdPm")
+STRIPE_API_KEY = os.getenv(
+    "STRIPE_API_KEY",
+    "sk_test_51Mb8DqEzBPFAU9qUETGKEr3xgRMQvwh0o1RcmVTsdFQaV8uo1wBvczRtJ9ZHl7vYXRSfFnPVSSHaeyvCKHpZvQRn00eE3dvdPm",
+)
